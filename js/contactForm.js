@@ -7,6 +7,7 @@
     if(myParam==='success')
     {
         alert('Your email was sent successfully');
+        window.location.assign('https://josephrhopkins88.github.io');
     }
 
 // Contact Form Submition
