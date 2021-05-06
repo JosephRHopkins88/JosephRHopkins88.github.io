@@ -1,5 +1,14 @@
 (function($) {
     "use strict";
+
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('mailform');
+    if(myParam==='success')
+    {
+        alert('Your email was sent successfully');
+    }
+
 // Contact Form Submition
 function checkRequire(formId , targetResp){
     targetResp.html('');
