@@ -15,7 +15,7 @@ function checkRequire(formId , targetResp){
     var target = (typeof formId == 'object')? $(formId):$('#'+formId);
     target.find('input , textarea , select').each(function(){
         if($(this).hasClass('require')){
-            if($(this).val().trim() == ''){
+            if($(this).val().trim() === ''){
                 check = 1;
                 $(this).focus();
                 targetResp.html('You missed out some fields.');
@@ -25,7 +25,7 @@ function checkRequire(formId , targetResp){
                 $(this).removeClass('error');
             }
         }
-        if($(this).val().trim() != ''){
+        if($(this).val().trim() !== ''){
             var valid = $(this).attr('data-valid');
             if(typeof valid != 'undefined'){
                 if(!eval(valid).test($(this).val().trim())){
@@ -47,18 +47,18 @@ $(".submitForm").on("click", function() {
     var targetForm = _this.closest('form');
     var errroTarget = targetForm.find('.response');
     var check = checkRequire(targetForm , errroTarget);
-    if(check == 0){
+    if(check === 0){
         var formDetail = new FormData(targetForm[0]);
         formDetail.append('form_type' , _this.attr('form-type'));
         $.ajax({
             method : 'post',
-            url : 'http://aametalwelding.com/resume/contactForm.php',
+            url : 'https://samko.com/JoeResume/contactForm.php',
             data:formDetail,
             cache:false,
             contentType: false,
             processData: false
         }).done(function(resp){
-            if(resp == 1){
+            if(resp === 1){
                 targetForm.find('input').val('');
                 targetForm.find('textarea').val('');
                 errroTarget.html('<p style="color:green;">Mail has been sent successfully.</p>');
